@@ -36,6 +36,11 @@
             padding: 10px;
             text-align: center;
         }
+        #explanation {
+            margin-top: 20px;
+            max-width: 600px;
+            text-align: left;
+        }
     </style>
 </head>
 <body>
@@ -63,6 +68,7 @@
         <h3>Result</h3>
         <table id="resultTable"></table>
     </div>
+    <div id="explanation"></div>
 
     <script>
         function multiplyMatrices() {
@@ -95,6 +101,19 @@
                     <td>${c10}</td>
                     <td>${c11}</td>
                 </tr>
+            `;
+
+            // Display the explanation
+            const explanation = document.getElementById("explanation");
+            explanation.innerHTML = `
+                <h3>Explanation</h3>
+                <p>The resulting matrix is calculated as follows:</p>
+                <ul>
+                    <li>c<sub>00</sub> = (a<sub>00</sub> * b<sub>00</sub>) + (a<sub>01</sub> * b<sub>10</sub>) = (${a00} * ${b00}) + (${a01} * ${b10}) = ${c00}</li>
+                    <li>c<sub>01</sub> = (a<sub>00</sub> * b<sub>01</sub>) + (a<sub>01</sub> * b<sub>11</sub>) = (${a00} * ${b01}) + (${a01} * ${b11}) = ${c01}</li>
+                    <li>c<sub>10</sub> = (a<sub>10</sub> * b<sub>00</sub>) + (a<sub>11</sub> * b<sub>10</sub>) = (${a10} * ${b00}) + (${a11} * ${b10}) = ${c10}</li>
+                    <li>c<sub>11</sub> = (a<sub>10</sub> * b<sub>01</sub>) + (a<sub>11</sub> * b<sub>11</sub>) = (${a10} * ${b01}) + (${a11} * ${b11}) = ${c11}</li>
+                </ul>
             `;
         }
     </script>
