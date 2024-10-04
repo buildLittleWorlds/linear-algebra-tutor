@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matrix Multiplication Interactive App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+        .matrix {
+            margin: 10px;
+        }
+        .matrix input {
+            width: 50px;
+            text-align: center;
+        }
+        button {
+            margin: 20px;
+            padding: 10px;
+            cursor: pointer;
+        }
+        #result {
+            margin-top: 20px;
+        }
+        table {
+            border-collapse: collapse;
+        }
+        td {
+            border: 1px solid #333;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Learn Matrix Multiplication</h1>
+    <div class="matrix" id="matrixA">
+        <h3>Matrix A</h3>
+        <div>
+            <input type="number" id="a00"> <input type="number" id="a01">
+        </div>
+        <div>
+            <input type="number" id="a10"> <input type="number" id="a11">
+        </div>
+    </div>
+    <div class="matrix" id="matrixB">
+        <h3>Matrix B</h3>
+        <div>
+            <input type="number" id="b00"> <input type="number" id="b01">
+        </div>
+        <div>
+            <input type="number" id="b10"> <input type="number" id="b11">
+        </div>
+    </div>
+    <button onclick="multiplyMatrices()">Multiply Matrices</button>
+    <div id="result">
+        <h3>Result</h3>
+        <table id="resultTable"></table>
+    </div>
+
+    <script>
+        function multiplyMatrices() {
+            // Get values from Matrix A
+            const a00 = parseFloat(document.getElementById("a00").value) || 0;
+            const a01 = parseFloat(document.getElementById("a01").value) || 0;
+            const a10 = parseFloat(document.getElementById("a10").value) || 0;
+            const a11 = parseFloat(document.getElementById("a11").value) || 0;
+
+            // Get values from Matrix B
+            const b00 = parseFloat(document.getElementById("b00").value) || 0;
+            const b01 = parseFloat(document.getElementById("b01").value) || 0;
+            const b10 = parseFloat(document.getElementById("b10").value) || 0;
+            const b11 = parseFloat(document.getElementById("b11").value) || 0;
+
+            // Perform matrix multiplication
+            const c00 = a00 * b00 + a01 * b10;
+            const c01 = a00 * b01 + a01 * b11;
+            const c10 = a10 * b00 + a11 * b10;
+            const c11 = a10 * b01 + a11 * b11;
+
+            // Display the result
+            const resultTable = document.getElementById("resultTable");
+            resultTable.innerHTML = `
+                <tr>
+                    <td>${c00}</td>
+                    <td>${c01}</td>
+                </tr>
+                <tr>
+                    <td>${c10}</td>
+                    <td>${c11}</td>
+                </tr>
+            `;
+        }
+    </script>
+</body>
+</html>
